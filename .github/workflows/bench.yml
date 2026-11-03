@@ -77,9 +77,12 @@ jobs:
       - name: List downloaded artifacts
         run: ls -la bench*.txt || echo "No matching files found"
 
+      - name: Test analyze scripts
+        run: npm test
+
       - name: Analyze results
         run: |
-          bash run_analyze_script.sh
+          node run_analyze.js
 
       - name: Print benchmark results
         run: cat ./results.md
